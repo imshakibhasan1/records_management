@@ -18,6 +18,18 @@ document.getElementById('add').addEventListener("click",() => {
     console.log(records);
 });
 
+// Part 2 Hunt values from local storage using key
+document.getElementById("get").addEventListener("click", () => {
+    let getData = JSON.parse(localStorage.getItem("records")) || {};
+    let key = document.getElementById("keyInput").value;
 
+    if (getData[key]) {
+        let record = getData[key];
+        document.getElementById("putResult").innerText = 
+            `Name: ${record.name} Email: ${record.email} Phone: ${record.phone}`;
+    } else {
+        document.getElementById("putResult").innerText = "No record found for this key!";
+    }
+});
 
 
